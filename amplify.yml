@@ -1,0 +1,19 @@
+version: 1
+applications:
+  - appRoot: front/apps/app1
+    frontend:
+      buildPath: /front
+      phases:
+        preBuild:
+          commands:
+            - npm install
+        build:
+          commands:
+            - npm run build --workspace=app1
+      artifacts:
+        baseDirectory: apps/app1/.next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
